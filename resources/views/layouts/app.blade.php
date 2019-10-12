@@ -33,7 +33,44 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                       <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ __('Menu') }} <span class="caret"></span>
+                                </a>
 
+                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdow">
+
+                                    <a class="dropdown-item" href="{{ route('berita.index') }}">
+                                        {{ __('Berita') }}
+                                    </a>
+
+
+                                    <a class="dropdown-item" href="{{ route('galeri.index') }}">
+                                        {{ __('Galeri') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('pengumuman.index') }}">
+                                        {{ __('Pengumuman') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('kategori_artikel.index') }}">
+                                        {{ __('Kategori Artikel') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('kategori_berita.index') }}">
+                                        {{ __('Kategori Berita') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('kategori_galeri.index') }}">
+                                        {{ __('Kategori Galeri') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('kategori_pengumuman.index') }}">
+                                        {{ __('Kategori Pengumuman') }}
+                                    </a>
+
+                                </div>
+                            </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -76,5 +113,11 @@
             @yield('content')
         </main>
     </div>
+  
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+    @yield('script')
 </body>
 </html>

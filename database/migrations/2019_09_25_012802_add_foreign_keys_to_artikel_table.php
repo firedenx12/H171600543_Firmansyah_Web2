@@ -15,7 +15,7 @@ class AddForeignKeysToArtikelTable extends Migration {
 		Schema::table('artikel', function(Blueprint $table)
 		{
 			$table->foreign('kategori_artikel_id', 'fk_artikel_kategori_artikel1')->references('id')->on('kategori_artikel')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('users_id', 'fk_kategori_users0')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('users_id', 'fk_kategori_users0')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
 		});
 	}
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Artikel;
+use App\KategoriArtikel;
 
 class ArtikelController extends Controller
 {
@@ -16,7 +17,7 @@ class ArtikelController extends Controller
     {
         //
         $Artikel = Artikel::all();
-        return view ('artikel.index')->with('data',$Artikel);
+        return view ('artikel.index',compact('Artikel'));
     }
 
     /**
@@ -26,8 +27,9 @@ class ArtikelController extends Controller
      */
     public function create()
     {
+        $KategoriArtikel = KategoriArtikel::pluck('nama','id');
         //
-        return view('artikel.create');
+        return view('artikel.create',compact('KategoriArtikel'));
     }
 
     /**
@@ -54,7 +56,7 @@ class ArtikelController extends Controller
     {
         //
         $Artikel = Artikel::find($id);
-        return view ('artikel.show')->with('data',$Artikel);
+        return view ('artikel.show',compact('Artikel'));
     }
 
     /**
@@ -66,6 +68,13 @@ class ArtikelController extends Controller
     public function edit($id)
     {
         //
+        $Artikel = Artikel::find($id);
+        $KategoriArtikel = KategoriArtikel::pluck('nama','id');
+        if (empty($Artikel)){
+            return redirect(route('artikel.index'));
+        }
+
+        return view ('artikel.edit',compact('Artikel','KategoriArtikel'));
     }
 
     /**
@@ -78,6 +87,14 @@ class ArtikelController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $Artikel = Artikel::find($id);
+        $input = $request->all();
+        if (empty($Artikel)){
+            return redirect(route('artikel.index'));
+        }
+        $Artikel->update($input);
+        return redirect(route('artikel.index'));
+
     }
 
     /**
@@ -88,6 +105,11 @@ class ArtikelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Artikel = Artikel::find($id);
+        if (empty($Artikel)){
+            return redirect(route('artikel.index'));
+        }
+         $Artikel->delete();
+         return redirect(route('artikel.index'));
     }
 }

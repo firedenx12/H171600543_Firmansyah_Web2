@@ -4,7 +4,7 @@
                             <label for="judul" class="col-md-4 col-form-label text-md-right">{{ __('Judul') }}</label>
 
                             <div class="col-md-6">
-                                <input id="judul" type="text" class="form-control @error('judul') is-invalid @enderror" name="judul" value="{{ old('judul') }}" required autocomplete="judul" autofocus>
+                                {!! Form::text('judul', null ,['class' => 'form-control']); !!}
 
                                 @error('judul')
                                     <span class="invalid-feedback" role="alert">
@@ -18,8 +18,7 @@
                             <label for="kategori_artikel_id" class="col-md-4 col-form-label text-md-right">{{ __('Kategori Artikel Id') }}</label>
 
                             <div class="col-md-6">
-                                <input id="kategori_artikel_id" type="text" class="form-control @error('judul') is-invalid @enderror" name="kategori_artikel_id" value="{{ old('kategori_artikel_id') }}" required autocomplete="kategori_artikel_id" autofocus>
-
+                                {!! Form::select('kategori_artikel_id',$KategoriArtikel, null, ['class' => 'form-control']); !!}
                                 @error('kategori_artikel
                                 _id')
                                     <span class="invalid-feedback" role="alert">
@@ -31,10 +30,10 @@
 
 
                         <div class="form-group row">
-                            <label for="judul" class="col-md-4 col-form-label text-md-right">{{ __('Isi') }}</label>
+                            <label for="isi" class="col-md-4 col-form-label text-md-right">{{ __('Isi') }}</label>
 
                             <div class="col-md-6">
-                                <input id="isi" type="text" class="form-control @error('isi') is-invalid @enderror" name="isi" value="{{ old('isi') }}" required autocomplete="isi" autofocus>
+                                {!! Form::textarea('isi', null ,['class' => 'form-control']); !!}
 
                                 @error('isi')
                                     <span class="invalid-feedback" role="alert">

@@ -16,7 +16,7 @@ class KategoriBeritaController extends Controller
     {
         //
         $kategoriBerita = KategoriBerita::all();
-        return view ('kategori_berita.index')->with('data',$kategoriBerita);
+        return view ('kategori_berita.index',compact('kategoriBerita'));
     }
 
     /**
@@ -54,7 +54,7 @@ class KategoriBeritaController extends Controller
     {
         //
         $kategoriBerita= KategoriBerita::find($id);
-        return view ('kategori_berita.show')->with('data',$kategoriBerita);
+        return view ('kategori_berita.show',compact('kategoriBerita'));
     }
 
     /**
@@ -66,6 +66,12 @@ class KategoriBeritaController extends Controller
     public function edit($id)
     {
         //
+        $kategoriBerita = KategoriBerita::find($id);
+        if (empty($kategoriBerita)){
+            return redirect(route('kategori_berita.index'));
+        }
+
+        return view ('kategori_berita.edit',compact('kategoriBerita'));
     }
 
     /**
@@ -78,6 +84,14 @@ class KategoriBeritaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $kategoriBerita = KategoriBerita::find($id);
+        $input = $request->all();
+        if (empty($kategoriBerita)){
+            return redirect(route('kategori_berita.index'));
+        }
+        $kategoriBerita->update($input);
+        return redirect(route('kategori_berita.index'));
+
     }
 
     /**
@@ -89,5 +103,11 @@ class KategoriBeritaController extends Controller
     public function destroy($id)
     {
         //
+        $kategoriBerita = KategoriBerita::find($id);
+        if (empty($kategoriBerita)){
+            return redirect(route('kategori_berita.index'));
+        }
+         $kategoriBerita->delete();
+         return redirect(route('kategori_berita.index'));
     }
 }

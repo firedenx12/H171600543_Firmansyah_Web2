@@ -8,9 +8,9 @@
                 <div class="card-header">List Kategori Berita</div>
 
                 <div class="card-body">
-              	<form method="post" action="{!! route('kategori_berita.store') !!}">
-              		@include('kategori_berita.form')
-              	</form>
+              	{!! Form::open(['route' => 'kategori_berita.store', 'method' => 'post']); !!}
+                  @include('kategori_berita.form')
+                {!! Form::close() !!}
                 </div>
             </div>
         </div>

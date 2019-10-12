@@ -4,7 +4,7 @@
                             <label for="nama" class="col-md-4 col-form-label text-md-right">{{ __('Nama') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" required autocomplete="nama" autofocus>
+                                {!! Form::text('nama', null ,['class' => 'form-control']); !!}
 
                                 @error('nama')
                                     <span class="invalid-feedback" role="alert">
@@ -17,10 +17,10 @@
                         <div class="form-group row">
                             <label for="kategori_galeri_id" class="col-md-4 col-form-label text-md-right">{{ __('Kategori Galeri Id') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="kategori_galeri_id" type="text" class="form-control @error('kategori_galeri_id') is-invalid @enderror" name="kategori_galeri_id" value="{{ old('kategori_galeri_id') }}" required autocomplete="kategori_galeri_id" autofocus>
-
-                                @error('kategori_galeri_id')
+                             <div class="col-md-6">
+                                {!! Form::select('kategori_galeri_id',$KategoriGaleri, null, ['class' => 'form-control']); !!}
+                                @error('kategori_galeri
+                                _id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -33,7 +33,7 @@
                             <label for="keterangan" class="col-md-4 col-form-label text-md-right">{{ __('Keterangan') }}</label>
 
                             <div class="col-md-6">
-                                <input id="keterangan" type="text" class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" value="{{ old('keterangan') }}" required autocomplete="keterangan" autofocus>
+                                {!! Form::textarea('keterangan', null ,['class' => 'form-control']); !!}
 
                                 @error('keterangan')
                                     <span class="invalid-feedback" role="alert">
@@ -47,7 +47,7 @@
                             <label for="path" class="col-md-4 col-form-label text-md-right">{{ __('Path') }}</label>
 
                             <div class="col-md-6">
-                                <input id="path" type="text" class="form-control @error('path') is-invalid @enderror" name="path" value="{{ old('path') }}" required autocomplete="path" autofocus>
+                               {!! Form::text('path', null ,['class' => 'form-control']); !!}
 
                                 @error('path')
                                     <span class="invalid-feedback" role="alert">

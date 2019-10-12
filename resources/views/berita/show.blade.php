@@ -10,29 +10,29 @@
                 <div class="card-body">
                   <div class="form-group row">
               	 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Judul') }}</label>
-                  <label for="name" class="col-md-4 col-form-label text-md-left">{!!$data->judul!!}</label>
+                  <label for="name" class="col-md-4 col-form-label text-md-left">{!!$Berita->judul!!}</label>
                  </div>   
                  <div class="form-group row">
                   <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Isi') }}</label>
-                  <label for="name" class="col-md-4 col-form-label text-md-left">{!!$data->isi!!}</label>
+                  <label for="name" class="col-md-4 col-form-label text-md-left">{!!$Berita->isi!!}</label>
                 </div>
                  
                  <div class="form-group row">
                   <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Users Id') }}</label>
-                  <label for="name" class="col-md-4 col-form-label text-md-left">{!!$data->users_id!!}</label>
+                  <label for="name" class="col-md-4 col-form-label text-md-left">{!!$Berita->users_id!!}</label>
                 </div>
                   
                  <div class="form-group row">
                   <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Kategori Berita Id') }}</label>
-                  <label for="name" class="col-md-4 col-form-label text-md-left">{!!$data->kategori_berita_id!!}</label>
+                  <label for="name" class="col-md-4 col-form-label text-md-left">{!!$Berita->kategori_berita_id!!}</label>
                 </div>
                 <div class="form-group row">
                   <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Create') }}</label>
-                  <label for="name" class="col-md-4 col-form-label text-md-left">{!!$data->created_at!!}</label>
+                  <label for="name" class="col-md-4 col-form-label text-md-left">{!!$Berita->created_at!!}</label>
                  </div>
                  <div class="form-group row"> 
                   <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Update') }}</label>
-                  <label for="name" class="col-md-4 col-form-label text-md-left">{!!$data->updated_at!!}</label>
+                  <label for="name" class="col-md-4 col-form-label text-md-left">{!!$Berita->updated_at!!}</label>
                 </div>
                 <div class="form-group row mb-0">
                            <div class="col-md-8 offset-md-4">

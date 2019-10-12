@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pengumuman;
+use App\KategoriPengumuman;
 
 class PengumumanController extends Controller
 {
@@ -16,7 +17,7 @@ class PengumumanController extends Controller
     {
         //
         $Pengumuman = Pengumuman::all();
-        return view ('pengumuman.index')->with('data',$Pengumuman);
+        return view ('pengumuman.index',compact('Pengumuman'));
     }
 
     /**
@@ -26,8 +27,9 @@ class PengumumanController extends Controller
      */
     public function create()
     {
+       $kategoriPengumuman = KategoriPengumuman::pluck('nama','id');
         //
-        return view('pengumuman.create');
+        return view('pengumuman.create',compact('kategoriPengumuman'));
     }
 
     /**
@@ -54,7 +56,7 @@ class PengumumanController extends Controller
     {
         //
         $Pengumuman = Pengumuman::find($id);
-        return view ('pengumuman.show')->with('data',$Pengumuman);
+        return view ('pengumuman.show',compact('Pengumuman'));
     }
 
     /**
@@ -63,9 +65,16 @@ class PengumumanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+   public function edit($id)
     {
         //
+        $Pengumuman = Pengumuman::find($id);
+        $KategoriPengumuman = KategoriPengumuman::pluck('nama','id');
+        if (empty($Pengumuman)){
+            return redirect(route('pengumuman.index'));
+        }
+
+        return view ('pengumuman.edit',compact('Pengumuman','KategoriPengumuman'));
     }
 
     /**
@@ -78,6 +87,14 @@ class PengumumanController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $Pengumuman = Pengumuman::find($id);
+        $input = $request->all();
+        if (empty($Pengumuman)){
+            return redirect(route('pengumuman.index'));
+        }
+        $Pengumuman->update($input);
+        return redirect(route('pengumuman.index'));
+
     }
 
     /**
@@ -88,6 +105,11 @@ class PengumumanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Pengumuman = Pengumuman::find($id);
+        if (empty($Pengumuman)){
+            return redirect(route('pengumuman.index'));
+        }
+         $Pengumuman->delete();
+         return redirect(route('pengumuman.index'));
     }
 }

@@ -17,3 +17,13 @@
     </div>
 </div>
 @endsection
+
+@section('script')
+<script src="https://cdn.ckeditor.com/4.13.0/full/ckeditor.js"></script>
+    <script>
+      $(document).ready(function() {
+        CKEDITOR.replace('isi');
+        
+      });
+    </script>
+@endsection

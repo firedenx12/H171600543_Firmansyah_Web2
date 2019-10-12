@@ -14,7 +14,7 @@ class AddForeignKeysToKategoriGaleriTable extends Migration {
 	{
 		Schema::table('kategori_galeri', function(Blueprint $table)
 		{
-			$table->foreign('users_id', 'fk_galeri_users10')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('users_id', 'fk_kategori_users10')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 

@@ -14,7 +14,7 @@ class AddForeignKeysToKategoriPengumumanTable extends Migration {
 	{
 		Schema::table('kategori_pengumuman', function(Blueprint $table)
 		{
-			$table->foreign('users_id', 'fk_kategori_users10')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('users_id', 'fk_kategori_users11')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -28,7 +28,7 @@ class AddForeignKeysToKategoriPengumumanTable extends Migration {
 	{
 		Schema::table('kategori_pengumuman', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_kategori_users10');
+			$table->dropForeign('fk_kategori_users11');
 		});
 	}
 

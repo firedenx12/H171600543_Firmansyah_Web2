@@ -18,7 +18,7 @@
 							<td>updated_at</td>
 						</tr>
 
-@foreach($data as $item)
+				@foreach($kategoriBerita as $item)
 
 						<tr>
 							<td>{!! $item->id !!}</td>
@@ -27,9 +27,15 @@
 							<td>{!! $item->created_at !!}</td>
 							<td>{!! $item->updated_at !!}</td>
 							<td><a href="{!! route('kategori_berita.show',[$item->id]) !!}" class="btn btn-primary">Lihat</a></td>
-</tr>
+							<td><a href="{!! route('kategori_berita.edit',[$item->id]) !!}" class="btn btn-primary">edit</a></td>
+							<td>
+							{!! Form::open(['route' => ['kategori_berita.destroy',$item->id], 'method' => 'delete']); !!}
+				            {!! Form::submit('Hapus',['class'=>'btn btn-danger']); !!}
+				            {!! Form::close() !!}
+							</td>
+						</tr>
 
-@endforeach
+				@endforeach
 
 </table>
                 </div>

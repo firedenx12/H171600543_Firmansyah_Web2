@@ -16,7 +16,7 @@ class KategoriPengumumanController extends Controller
     {
         //
         $kategoriPengumuman = KategoriPengumuman::all();
-        return view ('kategori_pengumuman.index')->with('data',$kategoriPengumuman);
+        return view ('kategori_pengumuman.index',compact('kategoriPengumuman'));
     }
 
     /**
@@ -54,7 +54,7 @@ class KategoriPengumumanController extends Controller
     {
         //
         $kategoriPengumuman = KategoriPengumuman::find($id);
-        return view ('kategori_pengumuman.show')->with('data',$kategoriPengumuman);
+        return view ('kategori_pengumuman.show',compact('kategoriPengumuman'));
     }
 
     /**
@@ -63,9 +63,15 @@ class KategoriPengumumanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+     public function edit($id)
     {
         //
+        $kategoriPengumuman = KategoriPengumuman::find($id);
+        if (empty($kategoriPengumuman)){
+            return redirect(route('kategori_pengumuman.index'));
+        }
+
+        return view ('kategori_pengumuman.edit',compact('kategoriPengumuman'));
     }
 
     /**
@@ -78,6 +84,14 @@ class KategoriPengumumanController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $kategoriPengumuman = KategoriPengumuman::find($id);
+        $input = $request->all();
+        if (empty($kategoriPengumuman)){
+            return redirect(route('kategori_engumuman.index'));
+        }
+        $kategoriPengumuman->update($input);
+        return redirect(route('kategori_pengumuman.index'));
+
     }
 
     /**
@@ -89,5 +103,11 @@ class KategoriPengumumanController extends Controller
     public function destroy($id)
     {
         //
+        $kategoriPengumuman = KategoriPengumuman::find($id);
+        if (empty($kategoriPengumuman)){
+            return redirect(route('kategori_pengumuman.index'));
+        }
+         $kategoriPengumuman->delete();
+         return redirect(route('kategori_pengumuman.index'));
     }
 }

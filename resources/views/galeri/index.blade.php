@@ -9,28 +9,35 @@
 
                 <div class="card-body">
                 	<a href="{!! route('galeri.create') !!}" class="btn btn-primary">Tambah Data</a>
-                    <table border='1'>
+                     <table class="table table-dark">
+                    	<thead>
 						<tr>
-							<td>Nama</td>
-							<td>Keterangan</td>
-							<td>Path</td>
-							<td>Users Id</td>
-							<td>Kategori Galeri Id</td>
-							<td>Created</td>
-							<td>Updated</td>
+							<th scope="col">Nama</th>
+							<th scope="col">Keterangan</th>
+							<th scope="col">Path</th>
+							<th scope="col">Users Id</th>
+							<th scope="col">Kategori Galeri Id</th>
+							<th scope="col">Created</th>
+							<th scope="col">Updated</th>
 						</tr>
-
-					@foreach($data as $item)
-
+						</thead>
+					@foreach($Galeri as $item)
+						<tbody>
 						<tr>
 							<td>{!! $item->nama !!}</td>
 							<td>{!! $item->keterangan !!}</td>
 							<td>{!! $item->path !!}</td>
 							<td>{!! $item->users_id !!}</td>
-							<td>{!! $item->kategori_galeri_id !!}</td>
+							<td>{!! $item->kategori_artikel_id !!}</td>
 							<td>{!! $item->created_at !!}</td>
 							<td>{!! $item->updated_at !!}</td>
 							<td><a href="{!! route('galeri.show',[$item->id]) !!}" class="btn btn-primary">Lihat</a></td>
+							<td><a href="{!! route('galeri.edit',[$item->id]) !!}" class="btn btn-primary">Edit</a></td>
+							<td>
+								{!! Form::open(['route' => ['galeri.destroy',$item->id], 'method' => 'delete']); !!}
+					            {!! Form::submit('Hapus',['class'=>'btn btn-danger']); !!}
+					            {!! Form::close() !!}
+							</td>
 						</tr>
 
 					@endforeach

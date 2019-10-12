@@ -5,22 +5,22 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">data</div>
-
+                <div class="card-header">List Artikel</div>
                 <div class="card-body">
-                	<a href="{!! route('artikel.create') !!}" class="btn btn-primary">Tambah Data</a>
-                    <table border='1'>
+                	<a href="{!! route('artikel.create') !!}" class="btn btn-primary">Tambah Data</a><br>
+                    <table class="table table-dark">
+                    	<thead>
 						<tr>
-							<td>Judul</td>
-							<td>Isi</td>
-							<td>Users Id</td>
-							<td>Kategori Arikel Id</td>
-							<td>Created</td>
-							<td>Updated</td>
+							<th scope="col">Judul</th>
+							<th scope="col">Isi</th>
+							<th scope="col">Users Id</th>
+							<th scope="col">Kategori Arikel Id</th>
+							<th scope="col">Created</th>
+							<th scope="col">Updated</th>
 						</tr>
-
-					@foreach($data as $item)
-
+						</thead>
+					@foreach($Artikel as $item)
+						<tbody>
 						<tr>
 							<td>{!! $item->judul !!}</td>
 							<td>{!! $item->isi !!}</td>
@@ -29,9 +29,16 @@
 							<td>{!! $item->created_at !!}</td>
 							<td>{!! $item->updated_at !!}</td>
 							<td><a href="{!! route('artikel.show',[$item->id]) !!}" class="btn btn-primary">Lihat</a></td>
+							<td><a href="{!! route('artikel.edit',[$item->id]) !!}" class="btn btn-primary">edit</a></td>
+							<td>
+								{!! Form::open(['route' => ['artikel.destroy',$item->id], 'method' => 'delete']); !!}
+					            {!! Form::submit('Hapus',['class'=>'btn btn-danger']); !!}
+					            {!! Form::close() !!}
+							</td>
 						</tr>
 
 					@endforeach
+					</tbody>
 
 				</table>
                 </div>
